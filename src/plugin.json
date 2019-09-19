@@ -1,0 +1,16 @@
+{
+  "id": "xray-report",
+  "name": "xray-report",
+  "version": "0.0.1",
+  "description": "xray-report for gauge",
+  "command" : {
+    "windows": ["launch.cmd"],
+    "linux": ["/bin/sh", "launch.sh"],
+    "darwin": ["/bin/sh", "launch.sh"]
+  },
+  "scope" : ["Execution"],
+  "gaugeVersionSupport": {
+    "minimum": "0.9.7",
+    "maximum": ""
+  }
+}

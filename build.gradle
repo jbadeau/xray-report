@@ -1,0 +1,61 @@
+import groovy.json.JsonSlurper
+
+group 'org.gauge.report'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.thoughtworks.gauge:gauge-api-client:1.0.7'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'org.gauge.xray.XrayReporter',
+                'Class-Path': configurations.runtime.collect { "../libs/" + it.getName() }.join(' '))
+    }
+}
+
+task distro(type: Zip) {
+    copy {
+        from configurations.compile
+        into 'deploy/libs'
+    }
+    copy {
+        from 'src'
+        into 'deploy'
+        include 'launch.*'
+        include 'plugin.json'
+    }
+
+    copy {
+        from 'build/libs'
+        into 'deploy/bin'
+        include '*.jar'
+        rename { String fileName ->
+            fileName.replace("-${project.version.toString()}", '')
+        }
+    }
+
+    def jsonFile = file('src/plugin.json')
+    def parsedJson = new JsonSlurper().parseText(jsonFile.text)
+
+    archiveName = "${parsedJson.name}-${parsedJson.version}.zip"
+    destinationDir = file('./artifacts')
+    from './deploy'
+    include '**/*'
+    exclude "*.zip"
+    includeEmptyDirs = false
+}
+
+clean.doFirst {
+    delete 'deploy'
+    delete 'artifacts'
+}
