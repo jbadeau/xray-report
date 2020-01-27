@@ -1,24 +1,33 @@
 import groovy.json.JsonSlurper
 
 group 'org.gauge.report'
-version '1.0-SNAPSHOT'
+version '0.0.3'
 
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    maven {
+        url 'https://artifactory.six-group.net/artifactory/torrent-snapshot'
+        credentials {
+            username = "tk9ax"
+            password = "password"
+        }
+    }
 }
 
 dependencies {
     compile 'com.thoughtworks.gauge:gauge-api-client:1.0.7'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.squareup.okhttp3:okhttp:4.2.2'
+    compile "com.squareup.okhttp3:okhttp-urlconnection:4.2.2"
+    compile 'com.vladsch.flexmark:flexmark-jira-converter:0.50.42'
 }
 
 jar {
     manifest {
-        attributes('Main-Class': 'org.gauge.xray.XrayReporter',
+        attributes('Main-Class': 'org.gauge.xray.Reporter',
                 'Class-Path': configurations.runtime.collect { "../libs/" + it.getName() }.join(' '))
     }
 }
