@@ -1,0 +1,189 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": false,
+  "properties": {
+    "testExecutionKey": {
+      "type": "string",
+      "required": false
+    },
+    "info": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "project": {
+          "type": "string",
+          "required": false
+        },
+        "summary": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "required": false
+        },
+        "user": {
+          "type": "string",
+          "required": false
+        },
+        "version": {
+          "type": "string",
+          "required": false
+        },
+        "revision": {
+          "type": "string",
+          "required": false
+        },
+        "startDate": {
+          "type": "string",
+          "required": false
+        },
+        "finishDate": {
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "comment": {
+            "type": "string",
+            "required": false
+          },
+          "finish": {
+            "type": "string",
+            "required": false
+          },
+          "start": {
+            "type": "string",
+            "required": false
+          },
+          "status": {
+            "type": "string",
+            "required": true
+          },
+          "testKey": {
+            "type": "string",
+            "required": true
+          },
+          "executedBy": {
+            "type": "string",
+            "required": false
+          },
+          "evidences": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "type": "object",
+              "required": false,
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "required": true
+                },
+                "filename": {
+                  "type": "string",
+                  "required": true
+                },
+                "contentType": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          },
+          "results": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "type": "object",
+              "required": false,
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "duration": {
+                  "type": "long",
+                  "required": false
+                },
+                "log": {
+                  "type": "string",
+                  "required": false
+                },
+                "status": {
+                  "type": "string",
+                  "required": true
+                },
+                "examples": {
+                  "type": "array",
+                  "required": false,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "examples": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "type": "string"
+            }
+          },
+          "steps": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "type": "object",
+              "required": false,
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "required": true
+                },
+                "comment": {
+                  "type": "string",
+                  "required": false
+                },
+                "evidences": {
+                  "type": "array",
+                  "required": false,
+                  "items": {
+                    "type": "object",
+                    "required": false,
+                    "properties": {
+                      "data": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "filename": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "contentType": {
+                        "type": "string",
+                        "required": false
+                      }
+                    }
+                  }
+                },
+                "actualResult": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
