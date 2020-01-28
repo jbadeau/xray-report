@@ -35,14 +35,6 @@ In order to avoid create a new test execution for each run add **TestExecutionKe
 # Spec
 Tags: TestExecutionKey-EXMPL-2
 ```
-
-## Build 
-  
-### 1. To build the plugin run   
-
-```
-../../gradlew clean build distro  
-```
   
 >Note the path that you are running this command. This is referred in the install step below**  
   
