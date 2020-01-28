@@ -25,7 +25,7 @@ public class Reporter {
         CookieManager cookieManager = new CookieManager();
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
         client = new OkHttpClient.Builder()
-                .cookieJar(new JavaNetCookieJar(cookieManager))
+                .cookieJar(CookieJar.NO_COOKIES)
                 .build();
     }
 

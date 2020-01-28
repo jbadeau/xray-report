@@ -1,8 +1,8 @@
 {
-  "id": "xray-report",
-  "name": "xray-report",
-  "version": "0.0.3",
-  "description": "xray-report for gauge",
+  "id": "${project.artifactId}",
+  "name": "${project.artifactId}",
+  "version": "${project.version}",
+  "description": "${project.description}",
   "command" : {
     "windows": ["launch.cmd"],
     "linux": ["/bin/sh", "launch.sh"],
