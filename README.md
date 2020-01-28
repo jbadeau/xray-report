@@ -1,35 +1,61 @@
-# Example - JSON report with gauge
+# xray-report 
+  
+Jira Xray reporting plugin for [Gauge](http://gauge.org)  
 
-> DISCLAIMER: This is just an example. Not meant to be used as is in a project. 
+## Usage  
+ 
+### 1. Add this plugin to your Gauge project by registering it in **manifest.json**
+```json
+{  
+  "Plugins": [  
+  "xray-report"
+  ]  
+}
+```
+### 2. Add the following Gauge environment properties
+```properties
+jira_url = https://your.jira.host
+jira_username = <TechnicalUser>
+jira_password = <TechnicalUserPassword>
+```
+> Do **NOT** add these to your Gauge project properties as they are publicly visible.
 
-> Note that there is a separate [json-report plugin](https://github.com/apoorvam/json-report) which gives a much better json.
+### 3. Add **TestKey-\<XrayTestKey>** tag to scenarios
 
-This project is an example implementation of the [report-seed](https://github.com/getgauge-contrib/report-seed)
+```markdown  
+## Scenario
+Tags: TestKey-EXMPL-1
+```
 
-The idea is to get the raw execution result and transform it to json.
+### 4. Reuse Test Execution
 
-## Running this example
+In order to avoid create a new test execution for each run add **TestExecutionKey-\<XrayTestExecutionKey>** tag to spec 
 
-To build the plugin run 
+```markdown  
+# Spec
+Tags: TestExecutionKey-EXMPL-2
+```
 
-`../../gradlew clean build distro`
+## Build 
+  
+### 1. To build the plugin run   
 
-**Note the path that you are running this command. This is referred in the install step below**
-
-To install the plugin
-
-***nix systems (linux/osx etc)**
-
-- `mkdir /tmp/sample` 
-- `cd /tmp/sample`
-- `gauge install json-report-example -f <path_to_build>/artifacts/json-report-example-0.0.1.zip`
+```
+../../gradlew clean build distro  
+```
+  
+>Note the path that you are running this command. This is referred in the install step below**  
+  
+### 2. To install the plugin  
+  
+***nix systems (linux/osx etc)**  
+  
+- `mkdir /tmp/sample` - `cd /tmp/sample`  
+- `gauge install xray-report -f <path_to_build>/artifacts/xray-report-0.1.0.zip`  
 - `gauge run specs`
-- Observe `reports/json-report-example/result.json`
-
-
-**Windows systems**
-- `mkdir %TEMP%\sample # on windows cmd`
-- `cd %TEMP%\sample`
-- `gauge install json-report-example -f <path_to_build>\artifacts\json-report-example-0.0.1.zip`
+  
+**Windows systems**  
+- `mkdir %TEMP%\sample # on windows cmd`  
+- `cd %TEMP%\sample`  
+- `gauge install xray-report -f <path_to_build>\artifacts\json-report-example-0.1.0.zip`  
 - `gauge run specs`
-- Observe `reports\json-report-example\result.json`
