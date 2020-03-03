@@ -5,19 +5,20 @@ Jira [Xray](https://www.getxray.app/) reporting plugin for [Gauge](http://gauge.
 Installation
 ------------
 
-```
+```bash
 gauge install xray-report
 ```
 
 Installing specific version:
 
-```
+```bash
 gauge install xray-report --version 0.1.0
 ```
 
 ### Offline installation
 * Download the plugin from [Releases](https://github.com/jbadeau/xray-report/releases)
-```
+
+```bash
 gauge install xray-report --file <path_to_plugin_zip_file>
 ```
 
@@ -25,7 +26,7 @@ gauge install xray-report --file <path_to_plugin_zip_file>
 
 Add this plugin to your Gauge project by registering it in `manifest.json` file. You can also do this by:
 
-```
+```bash
 gauge install json-report
 ```
 
