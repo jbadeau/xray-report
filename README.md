@@ -5,8 +5,10 @@ Jira [Xray](https://www.getxray.app/) reporting plugin for [Gauge](http://gauge.
 Installation
 ------------
 
+```
 gauge install xray-report
 ```
+
 Installing specific version:
 
 ```
