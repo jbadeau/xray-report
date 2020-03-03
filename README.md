@@ -9,13 +9,13 @@ Installation
 gauge install xray-report
 ```
 
-Installing specific version:
+#### Installing specific version:
 
 ```bash
 gauge install xray-report --version 0.1.0
 ```
 
-### Offline installation
+#### Offline installation
 * Download the plugin from [Releases](https://github.com/jbadeau/xray-report/releases)
 
 ```bash
