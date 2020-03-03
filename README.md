@@ -30,7 +30,7 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 gauge install json-report
 ```
 
-### 1. Provide the following env variables
+### Provide the following env variables
 ```properties
 jira_url = https://your.jira.url
 jira_username = <user>
