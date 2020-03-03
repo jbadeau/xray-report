@@ -31,7 +31,7 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 gauge install json-report
 ```
 
-### Provide the following env variables
+#### Provide the following env variables
 ```properties
 jira_url = https://your.jira.url
 jira_username = <user>
@@ -39,14 +39,14 @@ jira_password = <password>
 ```
 > Do **NOT** save the 'jira_password' in source code.
 
-### Add **TestKey-\<XrayTestKey>** tag to scenarios
+#### Add **TestKey-\<XrayTestKey>** tag to scenarios
 
 ```markdown  
 ## Scenario
 Tags: TestKey-PROJECT-1
 ```
 
-### Reuse Test Execution
+#### Reuse Test Execution
 
 In order to avoid creating a new test execution for each run, add **TestExecutionKey-\<XrayTestExecutionKey>** tag to spec 
 
