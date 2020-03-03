@@ -22,7 +22,8 @@ gauge install xray-report --version 0.1.0
 gauge install xray-report --file <path_to_plugin_zip_file>
 ```
 
-### Usage
+Usage
+-----
 
 Add this plugin to your Gauge project by registering it in `manifest.json` file. You can also do this by:
 
