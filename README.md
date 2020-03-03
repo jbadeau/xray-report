@@ -1,53 +1,52 @@
 # xray-report 
   
-Jira Xray reporting plugin for [Gauge](http://gauge.org)  
+Jira [Xray](https://www.getxray.app/) reporting plugin for [Gauge](http://gauge.org)  
 
-## Usage  
- 
-### 1. Add this plugin to your Gauge project by registering it in **manifest.json**
-```json
-{  
-  "Plugins": [  
-  "xray-report"
-  ]  
-}
+Installation
+------------
+
+gauge install xray-report
 ```
-### 2. Add the following Gauge environment properties
+Installing specific version:
+
+```
+gauge install xray-report --version 0.1.0
+```
+
+### Offline installation
+* Download the plugin from [Releases](https://github.com/jbadeau/xray-report/releases)
+```
+gauge install xray-report --file <path_to_plugin_zip_file>
+```
+
+### Usage
+
+Add this plugin to your Gauge project by registering it in `manifest.json` file. You can also do this by:
+
+```
+gauge install json-report
+```
+
+### 1. Provide the following env variables
 ```properties
-jira_url = https://your.jira.host
-jira_username = <TechnicalUser>
-jira_password = <TechnicalUserPassword>
+jira_url = https://your.jira.url
+jira_username = <user>
+jira_password = <password>
 ```
-> Do **NOT** add these to your Gauge project properties as they are publicly visible.
+> Do **NOT** save the 'jira_password' in source code.
 
-### 3. Add **TestKey-\<XrayTestKey>** tag to scenarios
+### Add **TestKey-\<XrayTestKey>** tag to scenarios
 
 ```markdown  
 ## Scenario
-Tags: TestKey-EXMPL-1
+Tags: TestKey-PROJECT-1
 ```
 
-### 4. Reuse Test Execution
+### Reuse Test Execution
 
-In order to avoid create a new test execution for each run add **TestExecutionKey-\<XrayTestExecutionKey>** tag to spec 
+In order to avoid creating a new test execution for each run, add **TestExecutionKey-\<XrayTestExecutionKey>** tag to spec 
 
 ```markdown  
 # Spec
-Tags: TestExecutionKey-EXMPL-2
+Tags: TestExecutionKey-PROJECT-2
 ```
-  
->Note the path that you are running this command. This is referred in the install step below**  
-  
-### 2. To install the plugin  
-  
-***nix systems (linux/osx etc)**  
-  
-- `mkdir /tmp/sample` - `cd /tmp/sample`  
-- `gauge install xray-report -f <path_to_build>/artifacts/xray-report-0.1.0.zip`  
-- `gauge run specs`
-  
-**Windows systems**  
-- `mkdir %TEMP%\sample # on windows cmd`  
-- `cd %TEMP%\sample`  
-- `gauge install xray-report -f <path_to_build>\artifacts\json-report-example-0.1.0.zip`  
-- `gauge run specs`
