@@ -5,7 +5,7 @@
 
     <groupId>org.gauge</groupId>
     <artifactId>xray-report</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <name>Xray Report</name>
     <description>Xray reporter</description>
 
