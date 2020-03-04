@@ -7,7 +7,7 @@ Please note that this is a preview release and am looking for feedback on:
 - What a failure report should look like
 - Auto test creation using X-ray generic test description
 
-I will soon release a Jira plugin that allows Gauge tests to be viewed in viewed with formatting and syntax highlighting. 
+I will soon release a Jira plugin that allows Gauge tests to be viewe with formatting and syntax highlighting. 
 
 Installation
 ------------
