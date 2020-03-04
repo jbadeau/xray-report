@@ -1,6 +1,6 @@
 # xray-report 
   
-Jira [Xray](https://www.getxray.app/) reporting plugin for [Gauge](http://gauge.org)  
+Jira [Xray](https://www.getxray.app/) plugin for [Gauge](http://gauge.org)  
 
 Please note that this is a preview release and am looking for feedback on:
 
