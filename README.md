@@ -4,10 +4,10 @@ Jira [Xray](https://www.getxray.app/) reporting plugin for [Gauge](http://gauge.
 
 Please note that this is a preview release and am looking for feedback on:
 
-- What a failure report should look like
-- Auto test creation using X-ray generic test description
+- What a failure report should look like and contain
+- Upload Gauge specs to autocreate Xray tests
 
-I will soon release a Jira plugin that allows Gauge tests to be viewe with formatting and syntax highlighting. 
+I will soon release a Jira plugin that allows Xray tests to render Gauge Specs with formatting and syntax highlighting. 
 
 Installation
 ------------
