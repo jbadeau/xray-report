@@ -55,7 +55,7 @@ jira_password = <password>
 
 ```markdown  
 ## Scenario
-Tags: TestKey-PROJECT-1
+Tags: TestCaseId:PROJECT-1
 ```
 
 #### Reuse Test Execution
@@ -64,5 +64,5 @@ In order to avoid creating a new test execution for each run, add **TestExecutio
 
 ```markdown  
 # Spec
-Tags: TestExecutionKey-PROJECT-2
+Tags: TestExecutionKey:PROJECT-2
 ```
