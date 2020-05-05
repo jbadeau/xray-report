@@ -101,7 +101,7 @@ public class Reporter {
 
     private static void authenticate(String baseUrl, String body) throws IOException {
         Request request = new Request.Builder()
-                .url(baseUrl + "/rest/auth/1/session")
+                .url(baseUrl + "/rest/auth/latest/session")
                 .post(RequestBody.create(body, JSON))
                 .build();
         try (Response response = client.newCall(request).execute()) {
