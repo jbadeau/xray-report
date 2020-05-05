@@ -35,7 +35,12 @@ Usage
 Add this plugin to your Gauge project by registering it in `manifest.json` file. You can also do this by:
 
 ```bash
-gauge install xray-report
+{
+  "Language": "java",
+  "Plugins": [
+    "xray-report"
+  ]
+}
 ```
 
 #### Provide the following env variables
