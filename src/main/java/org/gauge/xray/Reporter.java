@@ -25,11 +25,12 @@ public class Reporter {
         CookieManager cookieManager = new CookieManager();
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
         client = new OkHttpClient.Builder()
-                .cookieJar(CookieJar.NO_COOKIES)
+                .cookieJar(new JavaNetCookieJar(cookieManager))
                 .build();
     }
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
         String portEnv = System.getenv("plugin_connection_port");
         int port = Integer.parseInt(portEnv);
         Socket socket;
