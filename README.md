@@ -36,7 +36,7 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 
 ```bash
 {
-  "Language": "java",
+  "Language": "",
   "Plugins": [
     "xray-report"
   ]
