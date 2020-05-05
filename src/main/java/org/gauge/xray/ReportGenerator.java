@@ -43,7 +43,7 @@ public final class ReportGenerator {
 
     private static Test createTest(Spec.ProtoItem scenario) {
         Test test = null;
-        String testKey = getTestkey(scenario);
+        String testKey = getTestCaseId(scenario);
         if (testKey != null) {
             test = new Test();
             test.setTestKey(testKey);
@@ -90,12 +90,12 @@ public final class ReportGenerator {
         return Base64.getUrlEncoder().encodeToString(stacktrace.getBytes(StandardCharsets.UTF_8));
     }
 
-    private static String getTestkey(Spec.ProtoItem scenario) {
-        return getTagValue(scenario.getScenario().getTagsList(), "TestKey-");
+    private static String getTestCaseId(Spec.ProtoItem scenario) {
+        return getTagValue(scenario.getScenario().getTagsList(), "TestCaseId:");
     }
 
     private static String getTestExecutionKey(Spec.ProtoSpecResult spec) {
-        return getTagValue(spec.getProtoSpec().getTagsList(), "TestExecutionKey-");
+        return getTagValue(spec.getProtoSpec().getTagsList(), "TestExecutionId:");
     }
 
     private static String getTagValue(ProtocolStringList tags, String tagPrefix) {
