@@ -51,7 +51,7 @@ jira_password = <password>
 ```
 > Do **NOT** save the 'jira_password' in source code.
 
-#### Add **TestKey-\<XrayTestKey>** tag to scenarios
+#### Add **TestCaseId:\<XrayTestKey>** tag to scenarios
 
 ```markdown  
 ## Scenario
@@ -60,9 +60,9 @@ Tags: TestCaseId:PROJECT-1
 
 #### Reuse Test Execution
 
-In order to avoid creating a new test execution for each run, add **TestExecutionKey-\<XrayTestExecutionKey>** tag to spec 
+In order to avoid creating a new test execution for each run, add **TestExecutionId:\<XrayTestExecutionKey>** tag to spec 
 
 ```markdown  
 # Spec
-Tags: TestExecutionKey:PROJECT-2
+Tags: TestExecutionId:PROJECT-2
 ```
