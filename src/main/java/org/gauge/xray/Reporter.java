@@ -59,7 +59,7 @@ public class Reporter {
                     Credentials credentials = new Credentials(jiraUsername, jiraPassword);
                     authenticate(jiraBaseUrl, gson
                             .toJson(credentials));
-                    System.out.println(String.format("Uploading %d test executions to Jira Xray", reports.size()));
+                    System.out.println(String.format("Uploading %d test execution(s) to Jira Xray...", reports.size()));
                     for (Report report : reports) {
                         upload(jiraBaseUrl, gson.toJson(report));
                     }
@@ -89,6 +89,7 @@ public class Reporter {
 
 
     private static void upload(String baseUrl, String body) throws IOException {
+        System.out.println(body);
         Request request = new Request.Builder()
                 .url(baseUrl + "/rest/raven/1.0/import/execution")
                 .post(RequestBody.create(body, JSON))
@@ -96,6 +97,9 @@ public class Reporter {
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
                 System.err.println(String.format("Failed to uploaded test execution to Jira Xray %s", response.body().string()));
+            }
+            else {
+                System.out.println(String.format("Successfully uploaded test execution to Jira Xray"));
             }
         }
     }
