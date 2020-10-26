@@ -1,5 +1,6 @@
 package org.gauge.xray;
 
+import com.google.common.net.HttpHeaders;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.gauge.Messages.Message;
@@ -11,6 +12,8 @@ import java.io.IOException;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 
 public class Reporter {
@@ -21,6 +24,11 @@ public class Reporter {
 
     private static final OkHttpClient client;
 
+    enum authentication {
+        cookie,
+        basic
+    }
+
     static {
         CookieManager cookieManager = new CookieManager();
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
@@ -30,7 +38,7 @@ public class Reporter {
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String portEnv = System.getenv("plugin_connection_port");
         int port = Integer.parseInt(portEnv);
         Socket socket;
@@ -56,12 +64,15 @@ public class Reporter {
                     String jiraBaseUrl = getProperty("jira_url");
                     String jiraUsername = getProperty("jira_username");
                     String jiraPassword = getProperty("jira_password");
+                    String authentication = System.getenv().getOrDefault("jira_authentication", "cookie");
                     Credentials credentials = new Credentials(jiraUsername, jiraPassword);
-                    authenticate(jiraBaseUrl, gson
-                            .toJson(credentials));
+
+                    if (Reporter.authentication.cookie.name().equalsIgnoreCase(authentication)) {
+                        authenticate(jiraBaseUrl, gson.toJson(credentials));
+                    }
                     System.out.println(String.format("Uploading %d test execution(s) to Jira Xray...", reports.size()));
                     for (Report report : reports) {
-                        upload(jiraBaseUrl, gson.toJson(report));
+                        upload(jiraBaseUrl, gson.toJson(report), authentication, credentials);
                     }
                     System.exit(0);
                     return;
@@ -87,18 +98,28 @@ public class Reporter {
         return value;
     }
 
-
-    private static void upload(String baseUrl, String body) throws IOException {
+    private static void upload(String baseUrl, String body, String authentication, Credentials credentials) throws IOException {
         System.out.println(body);
-        Request request = new Request.Builder()
-                .url(baseUrl + "/rest/raven/1.0/import/execution")
-                .post(RequestBody.create(body, JSON))
-                .build();
+        Request request;
+        if (Reporter.authentication.basic.name().equalsIgnoreCase(authentication)) {
+            String auth = credentials.getUsername() + ":" + credentials.getPassword();
+            byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.ISO_8859_1));
+            String authHeader = "Basic " + new String(encodedAuth);
+            request = new Request.Builder()
+                    .url(baseUrl + "/rest/raven/1.0/import/execution")
+                    .header(HttpHeaders.AUTHORIZATION, authHeader)
+                    .post(RequestBody.create(body, JSON))
+                    .build();
+        } else {
+            request = new Request.Builder()
+                    .url(baseUrl + "/rest/raven/1.0/import/execution")
+                    .post(RequestBody.create(body, JSON))
+                    .build();
+        }
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
                 System.err.println(String.format("Failed to uploaded test execution to Jira Xray %s", response.body().string()));
-            }
-            else {
+            } else {
                 System.out.println(String.format("Successfully uploaded test execution to Jira Xray"));
             }
         }

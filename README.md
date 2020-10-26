@@ -19,7 +19,7 @@ gauge install xray-report
 #### Installing specific version:
 
 ```bash
-gauge install xray-report --version 0.1.0
+gauge install xray-report --version 0.1.1
 ```
 
 #### Offline installation
@@ -48,8 +48,11 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 jira_url = https://your.jira.url
 jira_username = <user>
 jira_password = <password>
+jira_authentication = cookie/basic
 ```
-> Do **NOT** save the 'jira_password' in source code.
+> Do **NOT** save the 'jira_password' in source code. 
+
+> Default jira_authentication is cookie if property not provided.
 
 #### Add **TestCaseId:\<XrayTestKey>** tag to scenarios
 
