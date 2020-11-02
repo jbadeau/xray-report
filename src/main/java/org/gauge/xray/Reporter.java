@@ -56,7 +56,8 @@ public class Reporter {
                 Message message = Message.parseDelimitedFrom(socket.getInputStream());
                 if (message.getMessageType() == Message.MessageType.SuiteExecutionResult) {
                     SuiteExecutionResult result = message.getSuiteExecutionResult();
-                    List<Report> reports = ReportGenerator.generate(result);
+                    String environment = getProperty("GAUGE_ENVIRONMENT");
+                    List<Report> reports = ReportGenerator.generate(result, environment);
                     Gson gson = new GsonBuilder()
                             .disableHtmlEscaping()
                             .setPrettyPrinting()

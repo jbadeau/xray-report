@@ -39,6 +39,9 @@ public class Info {
     @SerializedName("testEnvironments")
     @Expose
     private List<String> testEnvironments = new ArrayList();
+    @SerializedName("environment")
+    @Expose
+    private String environment;
 
     public String getProject() {
         return project;
@@ -167,5 +170,12 @@ public class Info {
         this.testEnvironments.add(testEnvironment);
     }
 
+    public void setEnvironment(String environment) {
+        this.environment = environment;
+    }
 
+    public String getEnvironment() {
+        return environment;
+    }
+    
 }
