@@ -24,11 +24,11 @@ public final class ReportGenerator {
     private ReportGenerator() {
     }
 
-    public static List<Report> generate(Messages.SuiteExecutionResult suite) {
+    public static List<Report> generate(Messages.SuiteExecutionResult suite, String environment) {
         List<Report> reports = new ArrayList();
         for (Spec.ProtoSpecResult spec : suite.getSuiteResult().getSpecResultsList()) {
             Report report = new Report();
-            report.setInfo(createInfo(suite.getSuiteResult()));
+            report.setInfo(createInfo(suite.getSuiteResult(), environment));
             report.setTestExecutionKey(getTestExecutionKey(spec));
             for (Spec.ProtoItem scenario : spec.getProtoSpec().getItemsList()) {
                 Test test = createTest(scenario);
@@ -61,10 +61,11 @@ public final class ReportGenerator {
         return test;
     }
 
-    private static Info createInfo(Spec.ProtoSuiteResult spec) {
+    private static Info createInfo(Spec.ProtoSuiteResult spec, String environment) {
         Info info = new Info();
         info.setSummary(spec.getProjectName());
         info.setTestEnvironments(Arrays.asList(spec.getEnvironment().split(",")));
+        info.setEnvironment(environment);
         return info;
     }
 
