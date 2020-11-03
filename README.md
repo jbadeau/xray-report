@@ -1,3 +1,5 @@
+[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/jbadeau/gauge%2Fxray-report?type=cf-1&key=eyJhbGciOiJIUzI1NiJ9.NWQ4NWM1MmZmZDJkZWY3MzVjMDIyNmY1.65xP0iIixl3qVtmA9g4HZK1DVuawEleW4W30ZFArCXQ)]( https://g.codefresh.io/pipelines/edit/new/builds?id=5e5e05eb35bf1863521e4e57&pipeline=xray-report&projects=gauge&projectId=5e56cc98f5ff833beb1ffa5b)
+
 # xray-report 
   
 Jira [Xray](https://www.getxray.app/) plugin for [Gauge](http://gauge.org)  
