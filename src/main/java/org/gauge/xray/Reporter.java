@@ -56,8 +56,11 @@ public class Reporter {
                 Message message = Message.parseDelimitedFrom(socket.getInputStream());
                 if (message.getMessageType() == Message.MessageType.SuiteExecutionResult) {
                     SuiteExecutionResult result = message.getSuiteExecutionResult();
-                    String environment = getProperty("GAUGE_ENVIRONMENT");
-                    List<Report> reports = ReportGenerator.generate(result, environment);
+                    
+                    String jiraTestExecutionId = getProperty("jira_testExecutionId");
+                    String jiraTestExecutionSummary = getProperty("jiraTestExecutionSummary");
+                    
+                    List<Report> reports = ReportGenerator.generate(result, jiraTestExecutionId, jiraTestExecutionSummary);
                     Gson gson = new GsonBuilder()
                             .disableHtmlEscaping()
                             .setPrettyPrinting()

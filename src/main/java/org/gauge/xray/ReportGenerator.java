@@ -24,12 +24,12 @@ public final class ReportGenerator {
     private ReportGenerator() {
     }
 
-    public static List<Report> generate(Messages.SuiteExecutionResult suite, String environment) {
+    public static List<Report> generate(Messages.SuiteExecutionResult suite, String jiraTestExecutionId, String jiraTestExecutionSummary) {
         List<Report> reports = new ArrayList();
         for (Spec.ProtoSpecResult spec : suite.getSuiteResult().getSpecResultsList()) {
             Report report = new Report();
-            report.setInfo(createInfo(suite.getSuiteResult(), environment));
-            report.setTestExecutionKey(getTestExecutionKey(spec));
+            report.setInfo(createInfo(suite.getSuiteResult(), jiraTestExecutionSummary));
+            report.setTestExecutionKey(jiraTestExecutionId != null ? jiraTestExecutionId : getTestExecutionKey(spec));
             for (Spec.ProtoItem scenario : spec.getProtoSpec().getItemsList()) {
                 Test test = createTest(scenario);
                 if (test != null) {
@@ -61,11 +61,10 @@ public final class ReportGenerator {
         return test;
     }
 
-    private static Info createInfo(Spec.ProtoSuiteResult spec, String environment) {
+    private static Info createInfo(Spec.ProtoSuiteResult spec, String jiraTestExecutionSummary) {
         Info info = new Info();
-        info.setSummary(spec.getProjectName());
+        info.setSummary(jiraTestExecutionSummary != null ? jiraTestExecutionSummary : spec.getProjectName());
         info.setTestEnvironments(Arrays.asList(spec.getEnvironment().split(",")));
-        info.setEnvironment(environment);
         return info;
     }
 
