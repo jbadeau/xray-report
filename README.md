@@ -56,6 +56,13 @@ jira_authentication = cookie/basic
 
 > Default jira_authentication is cookie if property not provided.
 
+The following env variables are optional, and allow to configure a specific testExecutionId and summary:
+
+```properties
+jira_testExecutionId = JIRA_ID
+jira_testExecutionSummary = Expected JIRA issue summary
+```
+
 #### Add **TestCaseId:\<XrayTestKey>** tag to scenarios
 
 ```markdown  
@@ -65,7 +72,8 @@ Tags: TestCaseId:PROJECT-1
 
 #### Reuse Test Execution
 
-In order to avoid creating a new test execution for each run, add **TestExecutionId:\<XrayTestExecutionKey>** tag to spec 
+In order to avoid creating a new test execution for each run, add **TestExecutionId:\<XrayTestExecutionKey>** tag to spec.
+Note: TestExecutionId defined in the tag will only be used if there was none set in the env variables. 
 
 ```markdown  
 # Spec
