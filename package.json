@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "version": "release-it"
+  },
   "devDependencies": {
     "@release-it/bumper": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
