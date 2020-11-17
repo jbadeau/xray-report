@@ -1,4 +1,10 @@
 {
   "git": false,
-  "npm": false
+  "npm": false,
+  "plugins": {
+    "@release-it/bumper": {
+      "in": "VERSION",
+      "out": "VERSION"
+    }
+  }
 }
