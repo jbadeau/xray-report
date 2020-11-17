@@ -14,9 +14,8 @@ steps:
     git: github
   calculate_version:
     title: Calculate version
-    type: git-clone
-    stage: prepare
     image: alpine:3.12.1
+    stage: prepare
     commands:
       - cf_export VERSION=$(cat VERSION)
   build:

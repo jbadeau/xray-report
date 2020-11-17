@@ -5,13 +5,14 @@
 
     <groupId>org.gauge</groupId>
     <artifactId>xray-report</artifactId>
-    <version>0.3.1</version>
+    <version>${revision}</version>
     <name>Xray Report</name>
     <description>Xray reporter</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.java>1.8</version.java>
+        <revision>0.0.0</revision>
     </properties>
 
     <dependencies>
