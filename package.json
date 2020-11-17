@@ -18,6 +18,10 @@
       "@release-it/bumper": {
         "in": "VERSION",
         "out": "VERSION"
+      },
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md"
       }
     }
   },
