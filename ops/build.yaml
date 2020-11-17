@@ -22,7 +22,7 @@ steps:
     image: node:15.2.1-alpine3.10
     stage: prepare
     commands:
-      - yarn relase-it
+      - yarn bump
       - cf_export VERSION=$(cat VERSION)
   build:
     title: Build repo
