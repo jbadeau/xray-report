@@ -11,6 +11,12 @@ steps:
     repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
     revision: '${{CF_REVISION}}'
     git: github
+  download_dependencies:
+    title: Download dependencies
+    image: 15.2.1-alpine3.10
+    stage: prepare
+    commands:
+      - yarn
   calculate_version:
     title: Calculate version
     image: alpine:3.12.1
