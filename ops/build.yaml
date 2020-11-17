@@ -20,7 +20,7 @@ steps:
       - cf_export VERSION=$(cat VERSION)
   build:
     title: Build repo
-    type: git-clone
+    type: freestyle
     stage: build
     image: 'maven:3.5.2-jdk-8-alpine'
     commands:
