@@ -2,7 +2,7 @@
   "name": "xray-report",
   "private": true,
   "scripts": {
-    "bump": "release-it --no-git",
+    "bump": "release-it --git false",
     "release": "release-it"
   },
   "devDependencies": {
