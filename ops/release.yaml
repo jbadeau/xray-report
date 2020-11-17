@@ -31,6 +31,12 @@ steps:
     image: 'maven:3.5.2-jdk-8-alpine'
     commands:
       - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
+  tag:
+    title: Tag
+    image: node:15.2.1-alpine3.10
+    stage: prepare
+    commands:
+      - yarn release
   release:
     title: Release
     type: github-release
