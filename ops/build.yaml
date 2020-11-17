@@ -3,7 +3,6 @@ stages:
   - prepare
   - test
   - build
-  -
 steps:
   main_clone:
     title: Clone repo
