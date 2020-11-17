@@ -2,7 +2,7 @@
   "name": "xray-report",
   "private": true,
   "scripts": {
-    "bump": "release-it",
+    "bump": "release-it"
   },
   "devDependencies": {
     "@release-it/bumper": "^2.0.0",
