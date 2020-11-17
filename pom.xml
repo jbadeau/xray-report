@@ -6,8 +6,8 @@
     <groupId>org.gauge</groupId>
     <artifactId>xray-report</artifactId>
     <version>${revision}</version>
-    <name>Xray Report</name>
-    <description>Xray reporter</description>
+    <name>XRay Report</name>
+    <description>Guage reporter for Jira XRay</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
