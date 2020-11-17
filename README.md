@@ -1,4 +1,4 @@
-[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/jbadeau/gauge%2Fxray-report?type=cf-1&key=eyJhbGciOiJIUzI1NiJ9.NWQ4NWM1MmZmZDJkZWY3MzVjMDIyNmY1.65xP0iIixl3qVtmA9g4HZK1DVuawEleW4W30ZFArCXQ)]( https://g.codefresh.io/pipelines/edit/new/builds?id=5e5e05eb35bf1863521e4e57&pipeline=xray-report&projects=gauge&projectId=5e56cc98f5ff833beb1ffa5b)
+[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/jbadeau/xray-report%2Fbuild?type=cf-1&key=eyJhbGciOiJIUzI1NiJ9.NWQ4NWM1MmZmZDJkZWY3MzVjMDIyNmY1.65xP0iIixl3qVtmA9g4HZK1DVuawEleW4W30ZFArCXQ)]( https://g.codefresh.io/pipelines/edit/new/builds?id=5e5e05eb35bf1863521e4e57&pipeline=build&projects=xray-report&projectId=5e56cc98f5ff833beb1ffa5b)
 
 # xray-report 
   
@@ -21,7 +21,7 @@ gauge install xray-report
 #### Installing specific version:
 
 ```bash
-gauge install xray-report --version 0.1.1
+gauge install xray-report --version x.x.x
 ```
 
 #### Offline installation
@@ -38,7 +38,6 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 
 ```bash
 {
-  "Language": "",
   "Plugins": [
     "xray-report"
   ]
@@ -46,36 +45,23 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 ```
 
 #### Provide the following env variables
-```properties
-jira_url = https://your.jira.url
-jira_username = <user>
-jira_password = <password>
-jira_authentication = cookie/basic
-```
+
+| Name                        | Description                    | Values        | Default | Required  | Example                                      |
+| ----------------------------|--------------------------------| --------------|---------|-----------|----------------------------------------------|
+| jira_url                    | Base URL of Jira API           |               |         | true      | https://your-domain.atlassian.net/rest/api/3 |
+| jira_auth                   | Auth mode                      | basic, cookie | basic   | true      |                                              |
+| jira_token                  | Jira token                     |               |         | false     |                                              |
+| jira_username               | Jira username                  |               |         | false     |                                              |
+| jira_password               | Jira password                  |               |         | false     |                                              |
+| jira_test_execution_id      | Reuse Jira test execution      |               |         | false     |                                              |
+| jira_test_execution_summary | Summary of Jira test execution |               |         | false     |                                              |
+
 > Do **NOT** save the 'jira_password' in source code. 
 
-> Default jira_authentication is cookie if property not provided.
-
-The following env variables are optional, and allow to configure a specific testExecutionId and summary:
-
-```properties
-jira_testExecutionId = JIRA_ID
-jira_testExecutionSummary = Expected JIRA issue summary
-```
 
 #### Add **TestCaseId:\<XrayTestKey>** tag to scenarios
 
 ```markdown  
 ## Scenario
 Tags: TestCaseId:PROJECT-1
-```
-
-#### Reuse Test Execution
-
-In order to avoid creating a new test execution for each run, add **TestExecutionId:\<XrayTestExecutionKey>** tag to spec.
-Note: TestExecutionId defined in the tag will only be used if there was none set in the env variables. 
-
-```markdown  
-# Spec
-Tags: TestExecutionId:PROJECT-2
 ```

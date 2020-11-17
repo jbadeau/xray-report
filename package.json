@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "devDependencies": {
+    "@release-it/bumper": "^2.0.0",
+    "@release-it/conventional-changelog": "^2.0.0",
+    "commitizen": "^4.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "release-it": "^14.2.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

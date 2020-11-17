@@ -1,0 +1,28 @@
+version: '1.0'
+stages:
+  - prepare
+  - test
+  - build
+  -
+steps:
+  main_clone:
+    title: Clone repo
+    type: git-clone
+    stage: prepare
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    git: github
+  calculate_version:
+    title: Calculate version
+    type: git-clone
+    stage: prepare
+    image: alpine:3.12.1
+    commands:
+      - cf_export VERSION=$(cat VERSION)
+  build:
+    title: Build repo
+    type: git-clone
+    stage: build
+    image: 'maven:3.5.2-jdk-8-alpine'
+    commands:
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
