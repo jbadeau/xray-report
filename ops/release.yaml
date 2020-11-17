@@ -9,7 +9,7 @@ steps:
     type: git-clone
     stage: prepare
     repo: 'https://github.com/jbadeau/xray-report.git'
-    revision: 'ops'
+    revision: 'jira-cloud'
     git: github
   download_dependencies:
     title: Download dependencies
