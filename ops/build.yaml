@@ -17,8 +17,8 @@ steps:
     stage: prepare
     commands:
       - yarn
-  calculate_version:
-    title: Calculate version
+  bump_version:
+    title: Bump version
     image: node:15.2.1-alpine3.10
     stage: prepare
     commands:
