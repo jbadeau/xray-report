@@ -34,12 +34,13 @@ steps:
   tag:
     title: Tag
     image: node:15.2.1-alpine3.10
-    stage: prepare
+    stage: build
     commands:
       - yarn release
   release:
     title: Release
     type: github-release
+    stage: build
     arguments:
       release_name: $VERSION
       release_tag: $VERSION
