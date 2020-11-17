@@ -8,8 +8,8 @@ steps:
     title: Clone repo
     type: git-clone
     stage: prepare
-    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-    revision: '${{CF_REVISION}}'
+    repo: 'https://github.com/jbadeau/xray-report.git'
+    revision: 'ops'
     git: github
   download_dependencies:
     title: Download dependencies
