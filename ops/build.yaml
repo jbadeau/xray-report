@@ -13,15 +13,16 @@ steps:
     git: github
   download_dependencies:
     title: Download dependencies
-    image: 15.2.1-alpine3.10
+    image: node:15.2.1-alpine3.10
     stage: prepare
     commands:
       - yarn
   calculate_version:
     title: Calculate version
-    image: alpine:3.12.1
+    image: node:15.2.1-alpine3.10
     stage: prepare
     commands:
+      - yarn relase-it
       - cf_export VERSION=$(cat VERSION)
   build:
     title: Build repo
