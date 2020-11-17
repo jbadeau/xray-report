@@ -33,10 +33,10 @@ steps:
       - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
   tag:
     title: Tag
-    image: node:15.2.1-alpine3.10
-    stage: build
+    image: alpine/git:latest
     commands:
-      - yarn release
+      - git add VERSION CHANGELOG.md
+      - git commit
   release:
     title: Release
     type: github-release
