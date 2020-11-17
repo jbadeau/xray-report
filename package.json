@@ -1,4 +1,5 @@
 {
+  "name": "xray-report",
   "private": true,
   "scripts": {
     "bump": "release-it"
