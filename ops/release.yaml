@@ -19,16 +19,15 @@ steps:
       - yarn
   bump_version:
     title: Bump version
-    image: node:15.2.1-alpine3.10
+    image: jbadeau/release-it
     stage: prepare
     commands:
-      - yarn bump
+      - release-it
       - cf_export VERSION=$(cat VERSION)
   build:
     title: Build repo
-    type: freestyle
+      image: maven:.6.3-openjdk-16-slim
     stage: build
-    image: 'maven:3.5.2-jdk-8-alpine'
     commands:
       - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
   tag:
