@@ -35,6 +35,7 @@ steps:
     image: jbadeau/release-it
     stage: build
     commands:
+      - git config --global credential.helper store
       - git config --global user.email "jose.badeau@gmail.com"
       - git config --global user.name "jbadeau"
       - release-it
