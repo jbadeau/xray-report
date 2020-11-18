@@ -1,20 +1,6 @@
 {
   "git": {
-    "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to}",
-    "requireCleanWorkingDir": true,
-    "requireBranch": false,
-    "requireUpstream": true,
-    "requireCommits": false,
-    "addUntrackedFiles": true,
-    "commit": true,
-    "commitMessage": "Release ${version}",
-    "commitArgs": [],
-    "tag": true,
-    "tagName": null,
-    "tagAnnotation": "Release ${version}",
-    "tagArgs": [],
-    "push": true,
-    "pushArgs": ["--follow-tags"]
+    "addUntrackedFiles": true
   },
   "plugins": {
     "@release-it/bumper": {
