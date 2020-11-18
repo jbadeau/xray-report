@@ -2,7 +2,7 @@
   "git": {
     "requireCleanWorkingDir": false,
     "addUntrackedFiles": true,
-    "pushRepo": "https://jbadeau:$GITHUB_TOKEN@github.com/jbadeau/xray-report.git"
+    "pushRepo": "https://jbadeau:${GITHUB_TOKEN}@github.com/jbadeau/xray-report.git"
   },
   "plugins": {
     "@release-it/bumper": {
