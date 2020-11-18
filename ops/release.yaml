@@ -22,6 +22,8 @@ steps:
     image: jbadeau/release-it
     stage: prepare
     commands:
+      - git config --global user.email "jose.badeau@gmail.com"
+      - git config --global user.name "jbadeau"
       - release-it --no-git
       - cf_export VERSION=$(cat VERSION)
   build:
