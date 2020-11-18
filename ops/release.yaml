@@ -39,6 +39,7 @@ steps:
       - git config --global user.name "jbadeau"
       - git config --global user.email "jose.badeau@gmail.com"
       - git remote add origin https://jbadeau:$GITHUB_TOKEN@github.com/jbadeau/xray-report.git
+      - git fetch
       - git branch --set-upstream-to origin/jira-cloud
       - release-it
 
