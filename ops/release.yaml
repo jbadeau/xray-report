@@ -11,6 +11,11 @@ steps:
     repo: 'https://github.com/jbadeau/xray-report.git'
     revision: 'jira-cloud'
     git: github
+  get_git_token:
+    title: Get github token
+    image: codefresh/cli
+    commands:
+      - cf_export GITHUB_TOKEN=$(codefresh get context github --decrypt -o yaml | yq -y .spec.data.auth.password)
   bump_version:
     title: Bump version
     image: jbadeau/release-it
