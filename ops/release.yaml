@@ -11,12 +11,6 @@ steps:
     repo: 'https://github.com/jbadeau/xray-report.git'
     revision: 'jira-cloud'
     git: github
-  download_dependencies:
-    title: Download dependencies
-    image: node:15.2.1-alpine3.10
-    stage: prepare
-    commands:
-      - yarn
   bump_version:
     title: Bump version
     image: jbadeau/release-it
@@ -26,22 +20,15 @@ steps:
       - cf_export VERSION=$(cat VERSION)
   build:
     title: Build repo
-    image: maven:.6.3-openjdk-16-slim
+    image: maven:3.6.3-openjdk-16-slim
     stage: build
     commands:
       - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
-  tag:
-    title: Tag
-    image: alpine/git:latest
-    commands:
-      - git add VERSION CHANGELOG.md
-      - git commit
   release:
     title: Release
-    type: github-release
+    image: jbadeau/release-it
     stage: build
-    arguments:
-      release_name: $VERSION
-      release_tag: $VERSION
-      files:
-        - '${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}/target/${{CF_REPO_NAME}}-${{VERSION}}.zip'
+    commands:
+      - release-it
+      - cf_export VERSION=$(cat VERSION)
+
