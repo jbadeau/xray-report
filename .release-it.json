@@ -1,7 +1,8 @@
 {
   "git": {
     "requireCleanWorkingDir": false,
-    "addUntrackedFiles": true
+    "addUntrackedFiles": true,
+    "upstream": "master"
   },
   "plugins": {
     "@release-it/bumper": {
