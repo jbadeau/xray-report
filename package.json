@@ -15,18 +15,5 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  },
-  "release-it": {
-    "npm": false,
-    "plugins": {
-      "@release-it/bumper": {
-        "in": "VERSION",
-        "out": "VERSION"
-      },
-      "@release-it/conventional-changelog": {
-        "preset": "angular",
-        "infile": "CHANGELOG.md"
-      }
-    }
   }
 }
