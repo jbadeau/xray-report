@@ -7,11 +7,13 @@ steps:
   get_git_token:
     title: Reading Github token
     image: codefresh/cli
+    stage: prepare
     commands:
       - cf_export GITHUB_TOKEN=$(codefresh get context github --decrypt -o yaml | yq -y .spec.data.auth.password)
   main_clone:
     title: Updating the repo
     image: alpine/git:latest
+    stage: prepare
     commands:
       - git clone https://jbadeau:$GITHUB_TOKEN@github.com/jbadeau/xray-report.git
       - cd xray-report && git remote rm origin
