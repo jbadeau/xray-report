@@ -14,6 +14,7 @@ steps:
   get_git_token:
     title: Get github token
     image: codefresh/cli
+    stage: prepare
     commands:
       - cf_export GITHUB_TOKEN=$(codefresh get context github --decrypt -o yaml | yq -y .spec.data.auth.password)
   bump_version:
