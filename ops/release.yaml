@@ -16,7 +16,7 @@ steps:
     image: jbadeau/release-it
     stage: prepare
     commands:
-      - release-it
+      - release-it --no-git
       - cf_export VERSION=$(cat VERSION)
   build:
     title: Build repo
@@ -30,5 +30,4 @@ steps:
     stage: build
     commands:
       - release-it
-      - cf_export VERSION=$(cat VERSION)
 

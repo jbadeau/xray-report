@@ -11,23 +11,17 @@ steps:
     repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
     revision: '${{CF_REVISION}}'
     git: github
-  download_dependencies:
-    title: Download dependencies
-    image: node:15.2.1-alpine3.10
-    stage: prepare
-    commands:
-      - yarn
   bump_version:
     title: Bump version
-    image: node:15.2.1-alpine3.10
+    image: jbadeau/release-it
     stage: prepare
     commands:
-      - yarn bump
+      - release-it --no-git
       - cf_export VERSION=$(cat VERSION)
   build:
     title: Build repo
     type: freestyle
     stage: build
-    image: 'maven:3.5.2-jdk-8-alpine'
+    image: maven:3.6.3-openjdk-16-slim
     commands:
       - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
