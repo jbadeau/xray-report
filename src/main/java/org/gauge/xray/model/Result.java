@@ -1,5 +1,5 @@
 
-package org.gauge.xray.report;
+package org.gauge.xray.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,5 @@
 
-package org.gauge.xray.report;
+package org.gauge.xray.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

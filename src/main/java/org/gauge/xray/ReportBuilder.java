@@ -3,10 +3,10 @@ package org.gauge.xray;
 import com.google.protobuf.ProtocolStringList;
 import com.thoughtworks.gauge.Messages;
 import com.thoughtworks.gauge.Spec;
-import org.gauge.xray.report.Evidence;
-import org.gauge.xray.report.Info;
-import org.gauge.xray.report.Report;
-import org.gauge.xray.report.Test;
+import org.gauge.xray.model.Evidence;
+import org.gauge.xray.model.Info;
+import org.gauge.xray.model.Report;
+import org.gauge.xray.model.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -14,17 +14,17 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
-public final class ReportGenerator {
+public final class ReportBuilder {
 
     private static final String STATUS_PASS = "PASS";
 
     private static final String STATUS_FAIL = "FAIL";
 
 
-    private ReportGenerator() {
+    private ReportBuilder() {
     }
 
-    public static List<Report> generate(Messages.SuiteExecutionResult suite, String jiraTestExecutionId, String jiraTestExecutionSummary) {
+    public static List<Report> build(Messages.SuiteExecutionResult suite, String jiraTestExecutionId, String jiraTestExecutionSummary) {
         List<Report> reports = new ArrayList();
         for (Spec.ProtoSpecResult spec : suite.getSuiteResult().getSpecResultsList()) {
             Report report = new Report();
