@@ -23,9 +23,9 @@ steps:
     image: maven:3.6.3-openjdk-16-slim
     stage: build
     commands:
-      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
+      - mvn package -Drevison=$VERSION -Dmaven.repo.local=/codefresh/volume/m2_repository
   release:
-    title: Release
+    title: Release version
     image: jbadeau/release-it
     stage: build
     commands:
