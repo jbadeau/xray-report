@@ -13,7 +13,7 @@ import java.net.CookiePolicy;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-public class Client {
+public class XrayClient {
 
     private static Gson gson = new GsonBuilder()
             .disableHtmlEscaping()
@@ -36,18 +36,24 @@ public class Client {
                 .build();
     }
 
-    public Client(String baseUrl, Credentials credentials) {
+    public XrayClient(String baseUrl, Credentials credentials) {
         this.baseUrl = baseUrl;
         this.credentials = credentials;
     }
 
-    public Response post(String body) throws IOException {
-        Request request = new Request.Builder()
+    public Response importExecution(String body) throws IOException {
+        Request request = getBaseRequestBuilder()
                 .url(baseUrl + "/rest/raven/1.0/import/execution")
-                .header(HttpHeaders.AUTHORIZATION, credentials.toBase64String())
                 .post(RequestBody.create(body, JSON))
                 .build();
         return client.newCall(request).execute();
     }
-    
+
+    private Request.Builder getBaseRequestBuilder() throws IOException {
+        return new Request.Builder()
+                .header("Authorization", "Basic " + credentials.toBase64String())
+                .header("Content-Type", "application/json");
+    }
+
+
 }

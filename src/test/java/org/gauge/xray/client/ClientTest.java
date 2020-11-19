@@ -15,5 +15,13 @@ public class ClientTest {
     @Before
     public void beforeEachTestMethod() {
     }
-    
+
+    @Test
+    public void getProjects() throws IOException {
+    }
+
+    @Test
+    public void authenticateServer() {
+    }
+
 }

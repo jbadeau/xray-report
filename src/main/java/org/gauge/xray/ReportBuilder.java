@@ -29,7 +29,7 @@ public final class ReportBuilder {
         for (Spec.ProtoSpecResult spec : suite.getSuiteResult().getSpecResultsList()) {
             Report report = new Report();
             report.setInfo(createInfo(suite.getSuiteResult(), jiraTestExecutionSummary));
-            report.setTestExecutionKey(jiraTestExecutionId != null ? jiraTestExecutionId : getTestExecutionKey(spec));
+            report.setTestExecutionKey(jiraTestExecutionId);
             for (Spec.ProtoItem scenario : spec.getProtoSpec().getItemsList()) {
                 Test test = createTest(scenario);
                 if (test != null) {
@@ -92,10 +92,6 @@ public final class ReportBuilder {
 
     private static String getTestCaseId(Spec.ProtoItem scenario) {
         return getTagValue(scenario.getScenario().getTagsList(), "TestCaseId:");
-    }
-
-    private static String getTestExecutionKey(Spec.ProtoSpecResult spec) {
-        return getTagValue(spec.getProtoSpec().getTagsList(), "TestExecutionId:");
     }
 
     private static String getTagValue(ProtocolStringList tags, String tagPrefix) {

@@ -1,18 +1,22 @@
 package org.gauge.xray;
 
-public class Credentials {
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
-    private String tokenOrPassword;
+public class Credentials {
 
     private String username;
 
-    public Credentials(String username, String tokenOrPassword) {
+    private String token;
+
+    public Credentials(String username, String token) {
         this.username = username;
-        this.tokenOrPassword = tokenOrPassword;
+        this.token = token;
     }
 
-    public String getCredentials() {
-        return username + ":" + tokenOrPassword;
+    public String toBase64String() {
+        String auth = username + ":" + token;
+        return Base64.getEncoder().encodeToString(auth.getBytes(StandardCharsets.UTF_8));
     }
 
 }
