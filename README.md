@@ -54,7 +54,7 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 | jira_test_execution_id      | Reuse Jira test execution      |               |         | false     |                                   |
 | jira_test_execution_summary | Summary of Jira test execution |               |         | false     |                                   |
 
-> Do **NOT** save the 'jira_password' in source code. 
+> Do **NOT** save the 'jira_token' in source code. 
 
 
 #### Add **TestCaseId:\<XrayTestKey>** tag to scenarios
