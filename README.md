@@ -46,15 +46,13 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 
 #### Provide the following env variables
 
-| Name                        | Description                    | Values        | Default | Required  | Example                                      |
-| ----------------------------|--------------------------------| --------------|---------|-----------|----------------------------------------------|
+| Name                        | Description                    | Values        | Default | Required  | Example                           |
+| ----------------------------|--------------------------------| --------------|---------|-----------|-----------------------------------|
 | jira_url                    | Base URL of Jira API           |               |         | true      | https://your-domain.atlassian.net |
-| jira_auth                   | Auth mode                      | basic, cookie | basic   | true      |                                              |
-| jira_token                  | Jira token                     |               |         | false     |                                              |
-| jira_username               | Jira username                  |               |         | false     |                                              |
-| jira_password               | Jira password                  |               |         | false     |                                              |
-| jira_test_execution_id      | Reuse Jira test execution      |               |         | false     |                                              |
-| jira_test_execution_summary | Summary of Jira test execution |               |         | false     |                                              |
+| jira_username               | Jira username                  |               |         | false     |                                   |
+| jira_token                  | Jira token                     |               |         | false     |                                   |
+| jira_test_execution_id      | Reuse Jira test execution      |               |         | false     |                                   |
+| jira_test_execution_summary | Summary of Jira test execution |               |         | false     |                                   |
 
 > Do **NOT** save the 'jira_password' in source code. 
 
