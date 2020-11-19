@@ -48,7 +48,7 @@ Add this plugin to your Gauge project by registering it in `manifest.json` file.
 
 | Name                        | Description                    | Values        | Default | Required  | Example                                      |
 | ----------------------------|--------------------------------| --------------|---------|-----------|----------------------------------------------|
-| jira_url                    | Base URL of Jira API           |               |         | true      | https://your-domain.atlassian.net/rest/api/3 |
+| jira_url                    | Base URL of Jira API           |               |         | true      | https://your-domain.atlassian.net |
 | jira_auth                   | Auth mode                      | basic, cookie | basic   | true      |                                              |
 | jira_token                  | Jira token                     |               |         | false     |                                              |
 | jira_username               | Jira username                  |               |         | false     |                                              |
