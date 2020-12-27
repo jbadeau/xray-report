@@ -57,8 +57,8 @@ public class Reporter {
                 if (message.getMessageType() == Message.MessageType.SuiteExecutionResult) {
                     SuiteExecutionResult result = message.getSuiteExecutionResult();
                     
-                    String jiraTestExecutionId = getProperty("jira_testExecutionId");
-                    String jiraTestExecutionSummary = getProperty("jira_testExecutionSummary");
+                    String jiraTestExecutionId = getProperty("jira_test_execution_d");
+                    String jiraTestExecutionSummary = getProperty("jira_test_execution_summary");
                     
                     List<Report> reports = ReportGenerator.generate(result, jiraTestExecutionId, jiraTestExecutionSummary);
                     Gson gson = new GsonBuilder()

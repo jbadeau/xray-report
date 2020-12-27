@@ -59,8 +59,8 @@ jira_authentication = cookie/basic
 The following env variables are optional, and allow to configure a specific testExecutionId and summary:
 
 ```properties
-jira_testExecutionId = JIRA_ID
-jira_testExecutionSummary = Expected JIRA issue summary
+jira_test_execution_id = JIRA_ID
+jira_test_execution_summary = Expected JIRA issue summary
 ```
 
 #### Add **TestCaseId:\<XrayTestKey>** tag to scenarios
