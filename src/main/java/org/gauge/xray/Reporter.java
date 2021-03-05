@@ -57,7 +57,7 @@ public class Reporter {
                 if (message.getMessageType() == Message.MessageType.SuiteExecutionResult) {
                     SuiteExecutionResult result = message.getSuiteExecutionResult();
                     
-                    String jiraTestExecutionId = getProperty("jira_test_execution_d");
+                    String jiraTestExecutionId = getProperty("jira_test_execution_id");
                     String jiraTestExecutionSummary = getProperty("jira_test_execution_summary");
                     
                     List<Report> reports = ReportGenerator.generate(result, jiraTestExecutionId, jiraTestExecutionSummary);
