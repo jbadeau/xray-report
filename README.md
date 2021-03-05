@@ -21,7 +21,7 @@ gauge install xray-report
 #### Installing specific version:
 
 ```bash
-gauge install xray-report --version 0.1.1
+gauge install xray-report --version 0.x.x
 ```
 
 #### Offline installation
